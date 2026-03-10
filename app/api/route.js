@@ -1,12 +1,11 @@
 let users = [];
-// let username = [];
-// let email = [];
-// let password = [];
 
+// GET → return all users
 export async function GET() {
   return Response.json(users);
 }
 
+// POST → add new user
 export async function POST(request) {
   const body = await request.json();
 
@@ -22,5 +21,32 @@ export async function POST(request) {
   return Response.json({
     message: "User Added",
     user
+  });
+}
+
+// PUT → update existing user
+export async function PUT(request) {
+  const body = await request.json();
+
+  const userIndex = users.findIndex(
+    (user) => user.id === body.id
+  );
+
+  if (userIndex === -1) {
+    return Response.json({
+      message: "User not found"
+    });
+  }
+
+  users[userIndex] = {
+    ...users[userIndex],
+    username: body.username,
+    email: body.email,
+    password: body.password
+  };
+
+  return Response.json({
+    message: "User Updated",
+    user: users[userIndex]
   });
 }
