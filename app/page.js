@@ -10,7 +10,6 @@ export default function HomeLogin() {
   const [password, setPassword] = useState('');
 
   const addUser = async () => {
-
     await fetch('/api', {
       method: 'POST',
       headers: {
@@ -26,6 +25,15 @@ export default function HomeLogin() {
     setUserName('');
     setEmail('');
     setPassword('');
+  };
+
+  const deleteUsers = async () => {
+    await fetch('/api', {
+      method: 'DELETE'
+    });
+
+    alert("All users deleted");
+    location.reload();
   };
 
   return (
@@ -63,6 +71,13 @@ export default function HomeLogin() {
           className="w-full bg-blue-600 hover:bg-blue-700 p-2 rounded-md"
         >
           Add User
+        </button>
+
+        <button
+          onClick={deleteUsers}
+          className="w-full bg-red-600 hover:bg-red-700 p-2 rounded-md"
+        >
+          Delete All Users
         </button>
 
         <Link href="/api">
