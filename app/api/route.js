@@ -24,6 +24,25 @@ export async function POST(request) {
   });
 }
 
+export async function DELETE() {
+  users = []; // clears all users
+
+  return Response.json({
+    message: "All users deleted"
+  });
+}
+
+// export async function DELETE(request) {
+//   const body = await request.json();
+//   const id = body.id;
+
+//   users = users.filter(user => user.id !== id);
+
+//   return Response.json({
+//     message: "User deleted"
+//   });
+// }
+
 {/* not in used right now */}
 
 // PUT → update existing user
