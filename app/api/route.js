@@ -24,29 +24,31 @@ export async function POST(request) {
   });
 }
 
+{/* not in used right now */}
+
 // PUT → update existing user
-export async function PUT(request) {
-  const body = await request.json();
+// export async function PUT(request) {
+//   const body = await request.json();
 
-  const userIndex = users.findIndex(
-    (user) => user.id === body.id
-  );
+//   const userIndex = users.findIndex(
+//     (user) => user.id === body.id
+//   );
 
-  if (userIndex === -1) {
-    return Response.json({
-      message: "User not found"
-    });
-  }
+//   if (userIndex === -1) {
+//     return Response.json({
+//       message: "User not found"
+//     });
+//   }
 
-  users[userIndex] = {
-    ...users[userIndex],
-    username: body.username,
-    email: body.email,
-    password: body.password
-  };
+//   users[userIndex] = {
+//     ...users[userIndex],
+//     username: body.username,
+//     email: body.email,
+//     password: body.password
+//   };
 
-  return Response.json({
-    message: "User Updated",
-    user: users[userIndex]
-  });
-}
+//   return Response.json({
+//     message: "User Updated",
+//     user: users[userIndex]
+//   });
+// }
